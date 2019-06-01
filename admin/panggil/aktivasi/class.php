@@ -98,6 +98,15 @@
 			return $readmhs;
 			// }
 		}
-
+		public function approve($npm){
+			$stmt = $this->conn->prepare("UPDATE `tbl_aktivasi` SET `status_aktivasi` = 2 
+				WHERE `kode_aktivasi` = ?") or die($this->conn->error);
+			$stmt->bind_param("s", $npm);
+			if($stmt->execute()){
+				$stmt->close();
+				$this->conn->close();
+				return true;
+			}
+		}
 	}	
 	?>

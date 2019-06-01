@@ -5,17 +5,17 @@
 </head>
 <body>
 	<style type="text/css">
-      body{
-        background-color:  #f0f5f5;
-        /*background: transparent;*/
-      }
-      form, table{
-      	background-color: white;
-      	padding:20px;
-      	border-radius: 5px;
+		body{
+			background-color:  #f0f5f5;
+			/*background: transparent;*/
+		}
+		form, table{
+			background-color: white;
+			padding:20px;
+			border-radius: 5px;
 
-      }
-    </style>
+		}
+	</style>
 
 </body>
 </html>
@@ -23,7 +23,6 @@
 require 'class.php';
 $conn = new db_class();
 $read = $conn->read();
-
 $link 	= "index.php?lihat=materi/";
 ?>
 
@@ -46,20 +45,20 @@ $link 	= "index.php?lihat=materi/";
 						<input type ="text" name = "nama_materi" class="form-control" autofocus>
 					</div>
 					<div class="form-group">
-				<label>Kode Mata Praktikum</label>
-				<select class="form-control" name="kode_mp" value="<?= $data->kode_mp ?>">
-					<?php
-					$con = mysqli_connect("localhost","root","","dbpraktikum");
-					$result = mysqli_query($con,"SELECT *FROM tbl_matapraktikum ORDER BY kode_mp");
-					echo "<option>--pilih kode mata praktikum--</option>";
-					while($row = mysqli_fetch_assoc($result)){
+						<label>Kode Mata Praktikum</label>
+						<select class="form-control" name="kode_mp" value="<?= $data->kode_mp ?>">
+							<?php
+							$con = mysqli_connect("localhost","root","","dbpraktikum");
+							$result = mysqli_query($con,"SELECT *FROM tbl_matapraktikum ORDER BY kode_mp");
+							echo "<option>--pilih kode mata praktikum--</option>";
+							while($row = mysqli_fetch_assoc($result)){
 
-						echo "<option value=$row[kode_mp]>$row[nama_mp]</option>";
-					} 
-					?>
-					</select>
-			</div>
-			
+								echo "<option value=$row[kode_mp]>$row[nama_mp]</option>";
+							} 
+							?>
+						</select>
+					</div>
+					
 					
 					<div class = "form-group">
 						<button name = "save" class = "btn btn-success">

@@ -17,7 +17,7 @@
 		}
 	</style>
 
-</body>
+</body>	
 </html>
 <?php
 require 'class.php';
@@ -100,43 +100,58 @@ $link 	= "index.php?lihat=aktivasi/";
 		</div><!-- .row -->
 		<br>
 
-	<!-- 	<table class="table table-hover table-bordered" style="margin-top: 10px">
+		<table class="table table-hover table-bordered" style="margin-top: 10px">
 			<tr class="info">
 				<th>No</th>
-				<th>kode Asprak</th>
-				<th>Nama Asprak</th>
-				<th>Jenis Kelamin</th>
-				<th>Foto</th>
-				<th>Telepon</th>
-				<th>E-mail</th>
-				<th>Password</th>
-
-				<th>Aksi</th>
+				<th>npm</th>
+				<th>kwitansi</th>
+				<th>keterangan</th>
+				<th>waktu aktivasi</th>
+				<th>status</th>
+				<th>aksi</th>
 			</tr>
 			<tbody>
 
 				<?php
 				$no=1;
 				while($tampil = $read->fetch_array()){ 
+					switch ($tampil['status_aktivasi']) {
+						case '0':
+
+						break;
+						case '1':
+							# code...
+						break;
+						case '2':
+
+						break;
+						default:
+							# code...
+						break;
+					}
 					?>
 
 					<tr>
 						<td><?php echo $no++; ?></td>
-						<td><?php echo $tampil['kode_asprak']?></td>
-						<td><?php echo $tampil['nama_asprak']?></td>
-						<td><?php echo $tampil['jk_asprak']?></td>
-						<td><?php echo "<img src = 'foto_asprak/".$tampil['foto_asprak']. " '  width =  '100' height = '100'> "?></td>
-						<td><?php echo $tampil['telp_asprak']?></td>
-						<td><?php echo $tampil['email_asprak']?></td>
-						<td><?php echo $tampil['pass_asprak']?></td>
-						
+						<td><?php echo $tampil['npm']?></td>
+						<td><?php echo "<img src = 'Sisprak/admin/panggil/aktivasi/file/".$tampil['kwitansi']. " '  width =  '100' height = '100' alt=".$tampil['kwitansi']."> "?></td>
+						<td><?php echo $tampil['keterangan']?></td>
+						<td><?php echo $tampil['waktu_aktivasi']?></td>
+						<td><?php echo $tampil['status_aktivasi']?></td>
 						<td style="text-align: center;">
-							<a href="<?= $link.'edit&kode_asprak='.$tampil['kode_asprak'] ?>" class="btn btn-primary btn-sm">
-								<span class = "glyphicon glyphicon-edit"></span> Edit
-							</a> 
-							<a onclick="return confirm('Apakah yakin data akan di hapus?')" href="	<?= $link.'hapus&kode_asprak='.$tampil['kode_asprak'] ?>" class="btn btn-danger btn-sm">
-								<span class = "glyphicon glyphicon-trash"></span> Hapus
-							</a>
+							<?php 
+							if ($tampil['status_aktivasi']!=2) {?>
+								<a href="<?= $link.'edit&kode_asprak='.$tampil['kode_aktivasi'] ?>" class="btn btn-primary btn-sm">
+									<span class = "glyphicon glyphicon-ok"></span> 
+								</a> 
+								<a onclick="return confirm('Apakah yakin data akan di hapus?')" href="	<?= $link.'hapus&kode_asprak='.$tampil['kode_aktivasi'] ?>" class="btn btn-danger btn-sm">
+									<span class = "glyphicon glyphicon-remove"></span> 
+								</a>
+								<?php
+							}else{
+								echo "status teraktivasi";							
+							}
+							?>
 						</td>
 					</tr>
 
@@ -146,6 +161,6 @@ $link 	= "index.php?lihat=aktivasi/";
 
 			</tbody>
 		</table>
-	-->	</div>
+	</div>
 </div>
 

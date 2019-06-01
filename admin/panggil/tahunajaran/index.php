@@ -5,17 +5,17 @@
 </head>
 <body>
 	<style type="text/css">
-      body{
-        background-color:  #f0f5f5;
-        /*background: transparent;*/
-      }
-      form, table{
-      	background-color: white;
-      	padding:20px;
-      	border-radius: 5px;
+		body{
+			background-color:  #f0f5f5;
+			/*background: transparent;*/
+		}
+		form, table{
+			background-color: white;
+			padding:20px;
+			border-radius: 5px;
 
-      }
-    </style>
+		}
+	</style>
 
 </body>
 </html>
@@ -23,7 +23,6 @@
 require 'class.php';
 $conn = new db_class();
 $read = $conn->read();
-
 $link 	= "index.php?lihat=tahunajaran/";
 ?>
 
@@ -36,15 +35,17 @@ $link 	= "index.php?lihat=tahunajaran/";
 			<!-- <div class = "col-lg-3"></div> -->
 			<div class = "col-lg-6">
 				<form method ="POST"action = "panggil/tahunajaran/tambah.php">
-
 					<div class="form-group">
 						<label>Semester</label>
-						<input type ="text" name = "semester" class="form-control" autofocus>
+						<select name="semester" class="form-control" required>
+							<option value="ganjil">Ganjil</option>
+							<option value="genap">Genap</option>
+						</select>
 					</div>
-
 					<div class="form-group">
 						<label>Tahun</label>
-						<input type ="text" name = "tahun" class="form-control" autofocus>
+						<input type ="text" name ="tahun1" class="form-control" autofocus required>
+						<input type ="text" name ="tahun2" class="form-control" autofocus required>
 					</div>
 					
 					<div class = "form-group">
@@ -62,14 +63,11 @@ $link 	= "index.php?lihat=tahunajaran/";
 		<table class="table table-hover table-bordered" style="margin-top: 10px">
 			<tr class="info">
 				<th>No</th>
-				<th>kode tahun ajaran</th>
 				<th>Semester</th>
 				<th>Tahun</th>
-				
 				<th>Aksi</th>
 			</tr>
 			<tbody>
-
 				<?php
 				$no=1;
 				while($tampil = $read->fetch_array()){ 
@@ -77,10 +75,8 @@ $link 	= "index.php?lihat=tahunajaran/";
 
 					<tr>
 						<td><?php echo $no++; ?></td>
-						<td><?php echo $tampil['semester'].$tampil['tahun']?></td>
 						<td><?php echo $tampil['semester']?></td>
-						<td><?php echo $tampil['tahun']?></td>
-						
+						<td><?php echo $tampil['tahun']?></td>						
 						<td style="text-align: center;">
 							<a href="<?= $link.'edit&kode_ta='.$tampil['kode_ta'] ?>" class="btn btn-primary btn-sm">
 								<span class = "glyphicon glyphicon-edit"></span> Edit
@@ -90,11 +86,9 @@ $link 	= "index.php?lihat=tahunajaran/";
 							</a>
 						</td>
 					</tr>
-
 					<?php
 				}
 				?>	
-
 			</tbody>
 		</table>
 	</div>
