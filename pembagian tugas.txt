@@ -1,0 +1,34 @@
+Project Bagian Aktifasi sisi mahasiswa dan admin
+
+brief :
+dalam menu aktivasi ada 2 page yaitu yg ada di sisi admin dan yang ada di sisi user. jadi alur sistem ini nanti juga terbagi 2
+alur sistem pertama yaitu sisi admin :  mahasiswa datang untuk menyetorkan kwitansi pembayaran kemudian admin akan melakukan aktivasi. 
+proses aktivasinya yaitu pertama mencari mahasiswa yang akan diaktifasi melalui form pencarian, ketika sudah menemukan mahasiswa maka tahap selanjutnya 
+adalah upload gambar berupa kwitansinya selain itu status untuk aktivasi menjadi kode (2) atau sudah teregistrasi
+
+alur sistem kedua adalah sisi mahasiswa : mahasiswa mempunyai halaman sendiri untuk melakukan aktivasi yaitu ada pada halaman aktivasi
+proses aktivasinya yaitu mahasiswa langsung saja mengupload gambar kwitansinya, kemudian apabila telah di upload status aktivasi menjadi kode (1) atau 
+menunggu persetujuan admin.
+
+task :
+pembagian tugas kelompok 
+kelompok maelani dkk koordinir halaman aktivasi admin
+- saat di pencarian bila user telah teraktivasi maka yang keluar adalah notifikasi atau teks bahwa user telah teraktivasi, 
+bila belum melakukan aktivasi maka akan mengeluarkan form aktivasi  berupa upload file
+kemudian bila sudah melakukan aktivasi melalui online maka akan tampil biodata + gambar kwitansi
+
+kelompok doni dkk koordinir halaman aktivasi mahasiswa
+- bila mahasiswa sudah teraktivasi maka hanya muncul text status sudah terkativasi + gambar kwitansinya
+selanjutnya bila mahasiswa sudah aktivasi hanya tinggal menunggu persetujuan admin maka tampilannya seperti form biasa, hanya saja tulisan
+tombol untuk submit menjadi "Menunggu persetujuan" dan tombolnya di disabled
+kemudian bila belum aktivasi sama sekali maka tampilan form biasa yang berisi upload file gambar
+
+kelompok green dkk kordinir sistem persetujuan admin
+- bila mahasiswa telah melakukan aktivasi online maka akan memunculkan notifikasi pada halaman berada yaitu menampilkan siapa saja yang perlu di beri persetujuan
+- bila admin melihat ada kesalahan mahasiswa yang melakukan aktivasi maka persetujuan akan digagalkan, dan memberikan notif ke mahasiswa untuk segera melakukan aktivasi dan gambar upload sebelumnya akan dihapus
+- notifikasi batas waktu administrasi
+
+
+dalam file yang aku upload sudah ada sistem upload gambarnya, tapi kalian coba coba dulu aja + ganti databasenya karena ada penambahan tabel aktivasi
+
+47
