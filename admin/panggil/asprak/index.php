@@ -2,63 +2,54 @@
 require 'class.php';
 $conn = new db_class();
 $read = $conn->read();
-$con = mysqli_connect("localhost","root","","dbpraktikum");
-$link 	= "index.php?lihat=mahasiswa/";
+
+$link 	= "index.php?lihat=asprak/";
 ?>
+
 <div class = "row">	
 	<div class = "col-lg-12">
-		<h3 class = "text-primary">Mastering Mahasiswa</h3>
+		<h3 class = "text-primary">Mastering Asprak</h3>
 		<hr style = "border-top:1px dotted #000;"/>
 
 		<div class = "row">	
 			<!-- <div class = "col-lg-3"></div> -->
 			<div class = "col-lg-6">
-				<form method ="POST" action = "panggil/mahasiswa/tambah.php" enctype="multipart/form-data">
+				<form method ="POST" action = "panggil/asprak/tambah.php" enctype = "multipart/form-data">
 					<div class="form-group">
-						<label>NPM</label>
-						<input type ="text" name = "npm" class="form-control" required>
+						<label>Kode Asprak</label>
+						<input type ="text" id="kode_asprak" name = "kode_asprak" class="form-control" >
 					</div>
 					<div class="form-group">
-						<label>NAMA MAHASISWA</label>
-						<input type ="text" name = "nama_mhs" class="form-control" autofocus required>
+						<label>Nama Asprak</label>
+						<input type ="text" id="nama_asprak" name = "nama_asprak" class="form-control" autofocus>
 					</div>
+
 					<div class="form-group">
-						<label>PASSWORD</label>
-						<input type ="password" name = "pass_mhs" class="form-control" autofocus required>
-					</div>
-					<div class="form-group">
-						<label>JENIS KELAMIN</label>
-						<div class="radio">
-							<label>
-								<input type="radio" name="jk_mhs" value="Perempuan" placeholder="Perempuan" required>
-								Perempuan
-							</label>
-							<label>
-								<input type="radio" name="jk_mhs" value="Laki-Laki" placeholder="Laki-Laki" required>
-								Laki-Laki
-							</label>
-						</div>
-					</div>
-					<div class="form-group">
-						<label>ALAMAT</label>
-						<textarea name = "alamat" class="form-control" required></textarea>
-					</div>
-					<div class="form-group">
-						<label>JURUSAN</label>
-						<select name="kode_jurusan" class="form-control" required>
-							<?php
-							echo "<option>--pilih Jurusan--</option>";
-							$result = mysqli_query($con,"SELECT * FROM tbl_jurusan");
-							while($row = mysqli_fetch_assoc($result)){
-								echo "<option value=$row[kode_jurusan]>$row[nama_jurusan]</option>";
-							} 
-							?>
-						</select>
+						<label>Jenis Kelamin</label>
+						<br>
+						<input type ="radio" name = "jk_asprak"  value = "Laki-Laki" > Laki - Laki </input>
+						<input type ="radio" name = "jk_asprak"  value = "Perempuan" >Perempuan </input>
 					</div>
 					<div class="form-group">
 						<label>Foto</label>
-						<input type="file" name="file" required>
+						<input type ="file" id="foto_asprak" name = "foto_asprak" class="form-control" autofocus>
 					</div>
+
+					<div class="form-group">
+						<label>Telepon</label>
+						<input type ="text" id="telp_asprak" name = "telp_asprak" class="form-control" >
+					</div>
+
+					<div class="form-group">
+						<label>E-mail</label>
+						<input type ="text" id="email_asprak" name = "email_asprak" class="form-control" >
+					</div>
+
+					<div class="form-group">
+						<label>Password</label>
+						<input type ="text" id="pass_asprak" name = "pass_asprak" class="form-control" >
+					</div>
+
 					<div class = "form-group">
 						<button name = "save" class = "btn btn-success">
 							<span class = "glyphicon glyphicon-floppy-disk"></span> 
@@ -70,38 +61,38 @@ $link 	= "index.php?lihat=mahasiswa/";
 			<div class = "col-lg-3"></div>
 		</div><!-- .row -->
 		<br>
+
 		<table class="table table-hover table-bordered" style="margin-top: 10px">
 			<tr class="info">
 				<th>No</th>
-				<th>NAMA MAHASISWA</th>
-				<th>ALAMAT</th>
-				<th>JURUSAN</th>
+				<th>Nama Asprak</th>
+				<th>Telepon</th>
+				<th>E-mail</th>
+
 				<th>Aksi</th>
 			</tr>
 			<tbody>
 				<?php
 				$no=1;
 				while($tampil = $read->fetch_array()){ 
-					$npm=$tampil['npm'];
 					?>
-
 					<tr>
 						<td><?php echo $no++; ?></td>
 						<td>
-							<a href="" id="edit" data-id="<?php echo $tampil['npm']?>">
-								<?php echo $tampil['nama_mhs']?>
+							<a href="" id="edit" data-id="<?php echo $tampil['kode_asprak']?>">
+								<?php echo $tampil['nama_asprak']?>
 							</a>
 						</td>
-						<td><?php echo $tampil['alamat']?></td>
-						<td><?php echo $tampil['nama_jurusan']?></td>
+						<td><?php echo $tampil['telp_asprak']?></td>
+						<td><?php echo $tampil['email_asprak']?></td>
 						<td style="text-align: center;">
-							<a onclick="return confirm('Apakah yakin Password Di Reset?')" href="<?= $link.'reset&npm='.$tampil['npm'] ?>" class="btn btn-danger btn-sm">
+							<a onclick="return confirm('Apakah yakin Password Di Reset?')" href="<?= $link.'reset&asprak='.$tampil['kode_asprak'] ?>" class="btn btn-danger btn-sm">
 								<span class=""></span> Reset Password
 							</a>
-							<a href="<?= $link.'edit&npm='.$tampil['npm'] ?>" class="btn btn-primary btn-sm">
+							<a href="<?= $link.'edit&kode_asprak='.$tampil['kode_asprak'] ?>" class="btn btn-primary btn-sm">
 								<span class = "glyphicon glyphicon-edit"></span> Edit
 							</a> 
-							<a onclick="return confirm('Apakah yakin data akan di hapus?')" href="	<?= $link.'hapus&npm='.$tampil['npm'] ?>" class="btn btn-danger btn-sm">
+							<a onclick="return confirm('Apakah yakin data akan di hapus?')" href="	<?= $link.'hapus&kode_asprak='.$tampil['kode_asprak'] ?>" class="btn btn-danger btn-sm">
 								<span class = "glyphicon glyphicon-trash"></span> Hapus
 							</a>
 						</td>
@@ -117,7 +108,7 @@ $link 	= "index.php?lihat=mahasiswa/";
 	$(document).on('click','#edit',function(e){
 		e.preventDefault();
 		$("#modal-lihat").modal('show');
-		$.post('panggil/mahasiswa/lihat.php',
+		$.post('panggil/asprak/lihat.php',
 			{id:$(this).attr('data-id')},
 			function(html){
 				$("#data-edit").html(html);
@@ -131,7 +122,7 @@ $link 	= "index.php?lihat=mahasiswa/";
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="exampleModalLabel">Data Detail Mahasiswa</h4>
+				<h4 class="modal-title" id="exampleModalLabel">Data Detail Asprak</h4>
 			</div>
 			<div class="modal-body" style="padding: 0px;">
 				<div id="data-edit">

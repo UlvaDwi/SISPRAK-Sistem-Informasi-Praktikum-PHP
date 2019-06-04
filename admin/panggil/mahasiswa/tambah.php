@@ -25,6 +25,7 @@ if(isset($_POST['save'])){
 					move_uploaded_file($file_tmp, 'gambar/'.$nama);
 					if($conn->create($npm, $nama_mhs,  $kode_jurusan, $alamat, $jk_mhs, $nama, $pass_mhs)){
 						echo 'FILE BERHASIL DI UPLOAD';
+						echo "<script> document.location.href='../../index.php?lihat=mahasiswa/index'; </script>";
 					}else{
 						echo 'GAGAL MENGUPLOAD GAMBAR';
 					}
