@@ -27,7 +27,7 @@
 			}
 		}
 
-	
+		
 		public function tampil($kode_mp){
 			$stmt = $this->conn->prepare("select * from tbl_matapraktikum where kode_mp =?") or die($this->conn->error);
 			$stmt->bind_param("s", $kode_mp);
@@ -59,5 +59,5 @@
 				return true;
 			}
 		}
- 	}	
-?>
+	}	
+	?>

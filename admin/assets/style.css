@@ -1,0 +1,9 @@
+body{
+  background-color:  #f0f5f5;
+  /*background: transparent;*/
+}
+form, table{
+ background-color: white;
+ padding:20px;
+ border-radius: 5px;
+}

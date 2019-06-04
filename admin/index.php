@@ -1,18 +1,21 @@
+<!DOCTYPE html>
 <html>
 <head>
   <title>SISPRAK</title>
   <!-- Panggil Bootstrap -->
-  <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+  <link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet">
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> -->
-  <script src="jquery/jquery.min.js"></script>
-  <script src="jquery/bootstrap.min.js"></script>
-  <style type="text/css">
-    body{
-      background-color: #f0f5f5;
-    }
-  </style>
+  <link rel="stylesheet" type="text/css" href="assets/style.css">
+  <script src="assets/jquery/jquery.min.js"></script>
+  <script src="assets/jquery2.0.3/jquery-2.0.3.min.js"></script>
+  <script src="assets/js/jquery.chained.min.js"></script>
+  <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
+
 </head>
 <body>
+  <?php
+  ob_start();
+  ?>
   <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
       <div class="navbar-header">
@@ -192,10 +195,18 @@
     include 'beranda.php';
   }
   ?>
-</div> <!-- .container -->
+</div> 
+<!-- .container -->
 <!-- Panggil JavaScript -->
 <!-- <script src="jquery/jquery.min.js"></script> -->
 <!-- <script src="bootstrap/js/bootstrap.min.js"></script>     -->
+<?php
+ob_end_flush();
+?>
+
+<!-- <script type="text/javascript" src="assets/bootstrap/js/bootstrap.js"></script> -->
+<!-- <script src="assets/jquery/bootstrap.min.js"></script> -->
+
 </body>
 
 </html>

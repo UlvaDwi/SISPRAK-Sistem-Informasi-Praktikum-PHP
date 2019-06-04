@@ -8,8 +8,8 @@ if(ISSET($_POST['update'])){
 	$conn = new db_class();
 	if ($conn->checkData($tahun, $semester) == 0) {
 		$conn->update ($kode_ta, $semester, $tahun);
-		// header('location: ../../index.php?lihat=tahunajaran/index');
-		echo "<meta http-equiv='refresh' content='0; url=../../index.php?lihat=tahunajaran/index'>";
+		echo "<script>alert('Data Terupdate')</script>";
+        echo "<script> document.location.href='../../index.php?lihat=tahunajaran/index'; </script>";
 	}else{
 		echo "<script>alert('Terdapat Duplikasi Data');history.go(-1);</script>";
 	}

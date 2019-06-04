@@ -1,36 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-	<style type="text/css">
-		body{
-			background-color:  #f0f5f5;
-			/*background: transparent;*/
-		}
-		form, table{
-			background-color: white;
-			padding:20px;
-			border-radius: 5px;
-
-		}
-	</style>
-
-</body>
-</html>
 <?php
 require 'class.php';
 $conn = new db_class();
 $read = $conn->read();
 $link 	= "index.php?lihat=tahunajaran/";
 ?>
-
 <div class = "row">	
 	<div class = "col-lg-12">
 		<h3 class = "text-primary"></h3>
 		<hr style = "border-top:1px dotted #000;"/>
-
 		<div class = "row">	
 			<!-- <div class = "col-lg-3"></div> -->
 			<div class = "col-lg-6">
@@ -59,7 +36,6 @@ $link 	= "index.php?lihat=tahunajaran/";
 			<div class = "col-lg-3"></div>
 		</div><!-- .row -->
 		<br>
-
 		<table class="table table-hover table-bordered" style="margin-top: 10px">
 			<tr class="info">
 				<th>No</th>

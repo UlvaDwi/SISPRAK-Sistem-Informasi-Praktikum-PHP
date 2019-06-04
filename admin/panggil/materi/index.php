@@ -1,31 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-	<style type="text/css">
-		body{
-			background-color:  #f0f5f5;
-			/*background: transparent;*/
-		}
-		form, table{
-			background-color: white;
-			padding:20px;
-			border-radius: 5px;
-
-		}
-	</style>
-
-</body>
-</html>
 <?php
-require 'class.php';
+require_once 'class.php';
 $conn = new db_class();
 $read = $conn->read();
 $link 	= "index.php?lihat=materi/";
-?>
+$con = mysqli_connect("localhost","root","","dbpraktikum");
 
+?>
 <div class = "row">	
 	<div class = "col-lg-12">
 		<h3 class = "text-primary">Master Materi</h3>
@@ -38,28 +18,36 @@ $link 	= "index.php?lihat=materi/";
 
 					<div class="form-group">
 						<label>Kode Materi</label>
-						<input type ="text" id="nominal" name = "kode_materi" class="form-control" >
+						<input type ="text" id="nominal" name = "kode_materi" class="form-control" required>
 					</div>
 					<div class="form-group">
-						<label>Nama Manteri</label>
-						<input type ="text" name = "nama_materi" class="form-control" autofocus>
-					</div>
-					<div class="form-group">
-						<label>Kode Mata Praktikum</label>
-						<select class="form-control" name="kode_mp" value="<?= $data->kode_mp ?>">
+						<label>Jurusan</label>
+						<select class="form-control" id="jurusan" required>
 							<?php
-							$con = mysqli_connect("localhost","root","","dbpraktikum");
-							$result = mysqli_query($con,"SELECT *FROM tbl_matapraktikum ORDER BY kode_mp");
-							echo "<option>--pilih kode mata praktikum--</option>";
+							echo "<option>--pilih Jurusan--</option>";
+							$result = mysqli_query($con,"SELECT * FROM tbl_jurusan");
 							while($row = mysqli_fetch_assoc($result)){
-
-								echo "<option value=$row[kode_mp]>$row[nama_mp]</option>";
+								echo "<option value=$row[kode_jurusan]>$row[nama_jurusan]</option>";
 							} 
 							?>
 						</select>
 					</div>
-					
-					
+					<div class="form-group">
+						<label>Mata Praktikum</label>
+						<select class="form-control" name="kode_mp" id="mp" required>
+							<?php
+							echo "<option>--pilih mata praktikum--</option>";
+							$result = mysqli_query($con,"SELECT tbl_matapraktikum.* ,tbl_jurusan.nama_jurusan FROM tbl_matapraktikum inner join tbl_jurusan on tbl_matapraktikum.kode_jurusan = tbl_jurusan.kode_jurusan ORDER BY kode_mp");
+							while($row = mysqli_fetch_assoc($result)){
+								echo "<option value=$row[kode_mp] class=$row[kode_jurusan] >$row[nama_mp]</option>";
+							} 
+							?>
+						</select>
+					</div>
+					<div class="form-group">
+						<label>Nama Manteri</label>
+						<input type ="text" name = "nama_materi" class="form-control" autofocus required>
+					</div>
 					<div class = "form-group">
 						<button name = "save" class = "btn btn-success">
 							<span class = "glyphicon glyphicon-floppy-disk"></span> 
@@ -75,9 +63,10 @@ $link 	= "index.php?lihat=materi/";
 		<table class="table table-hover table-bordered" style="margin-top: 10px">
 			<tr class="info">
 				<th>No</th>
-				<th>kode materi</th>
-				<th>Nama materi</th>
+				<!-- <th>kode materi</th> -->
+				<th>Jurusan</th>
 				<th>Mata Praktikum</th>
+				<th>Nama materi</th>
 				<th>Aksi</th>
 			</tr>
 			<tbody>
@@ -89,9 +78,10 @@ $link 	= "index.php?lihat=materi/";
 
 					<tr>
 						<td><?php echo $no++; ?></td>
-						<td><?php echo $tampil['kode_materi']?></td>
-						<td><?php echo $tampil['nama_materi']?></td>
+						<!-- <td><?php echo $tampil['kode_materi']?></td> -->
+						<td><?php echo $tampil['nama_jurusan']?></td>
 						<td><?php echo $tampil['nama_mp']?></td>
+						<td><?php echo $tampil['nama_materi']?></td>
 						
 						<td style="text-align: center;">
 							<a href="<?= $link.'edit&kode_materi='.$tampil['kode_materi'] ?>" class="btn btn-primary btn-sm">
@@ -112,3 +102,9 @@ $link 	= "index.php?lihat=materi/";
 	</div>
 </div>
 
+<script type="text/javascript">
+	// Add your javascript here
+	$(function(){
+		$("#mp").chained("#jurusan");
+	});
+</script>

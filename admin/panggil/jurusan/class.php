@@ -27,7 +27,7 @@
 			}
 		}
 
-	
+		
 		public function tampil($kode_jurusan){
 			$stmt = $this->conn->prepare("select * from tbl_jurusan where kode_jurusan =?") or die($this->conn->error);
 			$stmt->bind_param("s", $kode_jurusan);
@@ -59,5 +59,5 @@
 				return true;
 			}
 		}
- 	}	
-?>
+	}	
+	?>

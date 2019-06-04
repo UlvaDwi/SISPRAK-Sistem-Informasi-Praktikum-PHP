@@ -1,29 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-	<style type="text/css">
-		body{
-			background-color:  #f0f5f5;
-			/*background: transparent;*/
-		}
-		form, table{
-			background-color: white;
-			padding:20px;
-			border-radius: 5px;
-
-		}
-	</style>
-
-</body>
-</html>
 <?php
 require 'class.php';
 $conn = new db_class();
 $read = $conn->read();
-
+$con = mysqli_connect("localhost","root","","dbpraktikum");
 $link 	= "index.php?lihat=detailmateri/";
 ?>
 
@@ -36,32 +15,45 @@ $link 	= "index.php?lihat=detailmateri/";
 			<!-- <div class = "col-lg-3"></div> -->
 			<div class = "col-lg-6">
 				<form method ="POST"action = "panggil/detailmateri/tambah.php">
-
 					<div class="form-group">
-						<label>Kode Detail Materi</label>
-						<input type ="text" name = "kode_detail_materi" class="form-control" autofocus>
+						<label>Jurusan</label>
+						<select class="form-control" id="jurusan" required>
+							<?php
+							$result = mysqli_query($con,"SELECT *FROM tbl_jurusan");
+							echo "<option>--pilih Jurusan--</option>";
+							while($row = mysqli_fetch_assoc($result)){
+								echo "<option value=$row[kode_jurusan]>$row[nama_jurusan]</option>";
+							} 
+							?>
+						</select>
 					</div>
 					<div class="form-group">
-						<label>Kode Materi</label>
-						<select class="form-control" name="kode_materi" value="<?= $data->kode_materi ?>">
+						<label>Mata Praktikum</label>
+						<select class="form-control" id="mp" required>
 							<?php
-							$con = mysqli_connect("localhost","root","","dbpraktikum");
-							$result = mysqli_query($con,"SELECT *FROM tbl_materi ORDER BY kode_materi");
-							echo "<option>--pilih kode materi--</option>";
+							echo "<option>--pilih mata praktikum--</option>";
+							$result = mysqli_query($con,"SELECT * FROM tbl_matapraktikum");
 							while($row = mysqli_fetch_assoc($result)){
-
-								echo "<option value=$row[kode_materi]>$row[nama_materi]</option>";
+								echo "<option value=$row[kode_mp] class=$row[kode_jurusan]>$row[nama_mp]</option>";
 							} 
 							?>
 						</select>
 					</div>
 					<div class="form-group">
 						<label>Materi</label>
-						<input type ="text"  name = "materi" class="form-control" autofocus>
+						<select class="form-control" name="kode_materi" id="materi" required>
+							<?php
+							$result = mysqli_query($con,"SELECT * FROM tbl_materi");
+							echo "<option>--pilih materi--</option>";
+							while($row = mysqli_fetch_assoc($result)){
+								echo "<option value=$row[kode_materi] class=$row[kode_mp]>$row[nama_materi]</option>";
+							} 
+							?>
+						</select>
 					</div>
 					<div class="form-group">
 						<label>Keterangan</label>
-						<input type ="text" name = "keterangan" class="form-control" autofocus>
+						<textarea name = "keterangan" class="form-control" autofocus required></textarea>
 					</div>
 
 					<div class = "form-group">
@@ -79,10 +71,11 @@ $link 	= "index.php?lihat=detailmateri/";
 		<table class="table table-hover table-bordered" style="margin-top: 10px">
 			<tr class="info">
 				<th>No</th>
-				<th>Kode Detail Materi</th>
+				<!-- <th>Kode Detail Materi</th> -->
+				<th>jurusan</th>
+				<th>Mata Praktikum</th>
 				<th>Materi</th>
 				<th>Keterangan</th>
-				<th>Kode Materi</th>
 				<th>Aksi</th>
 			</tr>
 			<tbody>
@@ -94,10 +87,11 @@ $link 	= "index.php?lihat=detailmateri/";
 
 					<tr>
 						<td><?php echo $no++; ?></td>
-						<td><?php echo $tampil['kode_detail_materi']?></td>
-						<td><?php echo $tampil['materi']?></td>
+						<!-- <td><?php echo $tampil['kode_detail_materi']?></td> -->
+						<td><?php echo $tampil['nama_jurusan']?></td>
+						<td><?php echo $tampil['nama_mp']?></td>
+						<td><?php echo $tampil['nama_materi']?></td>
 						<td><?php echo $tampil['keterangan']?></td>
-						<td><?php echo $tampil['kode_materi']?></td>
 						<td style="text-align: center;">
 							<a href="<?= $link.'edit&kode_detail_materi='.$tampil['kode_detail_materi'] ?>" class="btn btn-primary btn-sm">
 								<span class = "glyphicon glyphicon-edit"></span> Edit
@@ -117,3 +111,9 @@ $link 	= "index.php?lihat=detailmateri/";
 	</div>
 </div>
 
+<script type="text/javascript">
+	$(function(){
+		$("#mp").chained("#jurusan");
+		$("#materi").chained("#mp");
+	});
+</script>

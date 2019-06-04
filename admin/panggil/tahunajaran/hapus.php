@@ -5,5 +5,5 @@
 	$conn 		= new db_class();
 	$conn->delete($kode_ta);
 	echo "<meta http-equiv='refresh' content='0; url= index.php?lihat=tahunajaran/index'>";
-
+	echo "<script>alert('Data Telah Terhapus');</script>";
 ?>

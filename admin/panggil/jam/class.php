@@ -1,6 +1,5 @@
 <?php
 	require 'koneksi.php';
-	
 	class db_class extends db_connect{	
 		
 		public function __construct(){

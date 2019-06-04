@@ -16,13 +16,12 @@ if(ISSET($_POST['save'])){
 
 	//set folder penyimpanan foto
 	$path = "../../foto_asprak/".$foto_baru ;
-
+	$conn = new db_class();
 	//proses simpan
 	if( move_uploaded_file ($tmp, $path))
 	{
-		$conn 		= new db_class();
-	$conn->create($kode_asprak , $nama_asprak, $jk_asprak , $foto_baru , $telp_asprak , $email_asprak , $pass_asprak);
-	header('location: index.php?lihat=asprak/index');
+		$conn->create($kode_asprak , $nama_asprak, $jk_asprak , $foto_baru , $telp_asprak , $email_asprak , $pass_asprak);
+		header('location: ../../index.php?lihat=asprak/index');
 	}
 
 	

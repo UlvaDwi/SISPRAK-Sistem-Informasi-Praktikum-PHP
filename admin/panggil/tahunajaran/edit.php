@@ -1,24 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-	<style type="text/css">
-		body{
-			background-color:  #f0f5f5;
-			/*background: transparent;*/
-		}
-		form, table{
-			background-color: white;
-			padding:20px;
-			border-radius: 5px;
-
-		}
-	</style>
-
-</body>
-</html><?php
+<?php
 require_once 'class.php';
 $conn = new db_class();
 //Memgambil id data get dari url
@@ -65,5 +45,4 @@ $fetch = $conn->tampil($kode_ta);
 			</button>
 		</form>
 	</div>
-</div>
 </div>
