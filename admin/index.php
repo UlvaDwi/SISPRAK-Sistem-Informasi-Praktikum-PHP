@@ -107,6 +107,12 @@
         </a>
         <ul class="dropdown-menu">
           <li>
+            <a href="index.php?lihat=penjadwalan/index">
+              <span class="glyphicon glyphicon-lock"></span> 
+              &nbsp;Penjadwalan
+            </a>
+          </li>
+          <li>
             <a href="index.php?lihat=kelas/index">
               <span class="glyphicon glyphicon-lock"></span> 
               &nbsp;kelas
@@ -156,11 +162,9 @@
       </a>
     </li>
     <!-- KRP -->
-    <!-- Logout -->
     <li>
       <a href="index.php?lihat=krp/index">
-        <span class="glyphicon glyphicon-usd"></span> 
-        KRP
+        <span class="glyphicon glyphicon-home"></span> KRP
       </a>
     </li>
     <!-- Request -->

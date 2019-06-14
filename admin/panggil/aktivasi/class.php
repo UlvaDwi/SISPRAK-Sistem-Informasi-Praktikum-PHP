@@ -96,7 +96,6 @@
 				$readmhs = 0;
 			}
 			return $readmhs;
-			// }
 		}
 		public function approve($npm){
 			$stmt = $this->conn->prepare("UPDATE `tbl_aktivasi` SET `status_aktivasi` = 2 
