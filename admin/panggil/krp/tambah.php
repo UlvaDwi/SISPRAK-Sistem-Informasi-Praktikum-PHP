@@ -6,10 +6,11 @@ if(ISSET($_POST['sav'])){
 	$npm = $_POST['npm'];
 	while ($i=$mp->fetch_array()) {
 		$k = $i['kode_mp'];
-		$kode_mp = $_POST['matapraktikum'.$k];
-		// echo $kode_mp." ".$npm;
-		$conn->wew($kode_mp, $npm);
-		// echo "</br>";	
+		if (isset($_POST['matapraktikum'.$k])) {
+			// echo $_POST['matapraktikum'.$k]." ".$npm;
+			$conn->wew($_POST['matapraktikum'.$k], $npm);
+			// echo "</br>";	
+		}
 	}
 	echo "<script>alert('Data Tersimpan')</script>";
 	echo "<script> document.location.href='../../index.php?lihat=krp/index'; </script>";

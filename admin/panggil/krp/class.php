@@ -21,14 +21,6 @@
  	}
 
  	public function wew($kd,$npm){
- 		// $this->conn->close();
- 		// $stmt = $this->conn->prepare("INSERT INTO `tbl_krp` (`kode_penjadwalan_mhs`, `kode_jadwal_praktikum`, `npm`) VALUES (NULL, ?, ?)") or die($this->conn->error);
- 		// $stmt->bind_param("ss", $kd, $npm);
- 		// if($stmt->execute()){
- 		// 	// $stmt->close();
- 		// 	// $this->conn->close();
- 		// 	// return true;
- 		// }
  		$konek = mysqli_connect("localhost", "root", "", "dbpraktikum");
  		$kd_escape = mysqli_real_escape_string($konek, $kd);
  		$npm_escape = mysqli_real_escape_string($konek, $npm);
@@ -40,6 +32,23 @@
  			mysql_error();
  		}
  	}
+
+ 	public function jumlah_orang($kd_jadwal){
+ 		$sql = "SELECT kode_jadwal_praktikum, count(kode_jadwal_praktikum) as jumlah FROM `tbl_krp` where kode_jadwal_praktikum = ? GROUP by kode_jadwal_praktikum";
+ 		$konek = mysqli_connect("localhost", "root", "", "dbpraktikum");
+ 		$stmt = mysqli_stmt_init($konek);
+ 		if (!mysqli_stmt_prepare($stmt, $sql)) {
+ 			$hasil = "error";
+ 		}else{
+ 			mysqli_stmt_bind_param($stmt, "s", $kd_jadwal);
+ 			mysqli_stmt_execute($stmt);
+ 			$result = mysqli_stmt_get_result($stmt);
+ 			$row = mysqli_fetch_assoc($result);
+ 			$hasil = $row['jumlah'];
+ 		}
+ 		return $hasil;
+ 	}
+
 
  	public function read_mp($jurusan){
  		$stmt = $this->conn->prepare("SELECT kode_mp FROM `tabel_penjadwalan` where tabel_penjadwalan.kode_jurusan = $jurusan GROUP BY tabel_penjadwalan.kode_mp") or die($this->conn->error);
@@ -61,7 +70,7 @@
  	}
  	
  	public function pilihan_krp($npm){
- 		$sql = "select tbl_krp.*, tabel_penjadwalan.* from tbl_krp inner join tabel_penjadwalan on tbl_krp.kode_jadwal_praktikum = tabel_penjadwalan.kode_jadwal_praktikum where tbl_krp.npm =? ";
+ 		$sql = "select * from tabel_krp where npm =? ";
  		$konek = mysqli_connect("localhost", "root", "", "dbpraktikum");
  		$stmt = mysqli_stmt_init($konek);
  		if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -87,13 +96,16 @@
  		}
  	}
 
- 	public function delete($kode_materi){
- 		$stmt = $this->conn->prepare("DELETE FROM `tbl_materi` WHERE `kode_materi` = ?") or die($this->conn->error);
- 		$stmt->bind_param("s", $kode_materi);
- 		if($stmt->execute()){
- 			$stmt->close();
- 			$this->conn->close();
- 			return true;
+ 	public function delete($kd, $npm){
+ 		$sql = "DELETE FROM `tbl_krp` WHERE `kode_jadwal_praktikum` = ? AND `npm` = ?";
+ 		$konek = mysqli_connect("localhost", "root", "", "dbpraktikum");
+ 		$stmt = mysqli_stmt_init($konek);
+ 		if (!mysqli_stmt_prepare($stmt, $sql)) {
+ 			$result = "error";
+ 		}else{
+ 			mysqli_stmt_bind_param($stmt, "ss", $kd, $npm);
+ 			mysqli_stmt_execute($stmt);
+ 			$result = "terhapus";		
  		}
  	}
 

@@ -10,6 +10,8 @@
   <script src="assets/jquery2.0.3/jquery-2.0.3.min.js"></script>
   <script src="assets/js/jquery.chained.min.js"></script>
   <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
 
 </head>
 <body>
