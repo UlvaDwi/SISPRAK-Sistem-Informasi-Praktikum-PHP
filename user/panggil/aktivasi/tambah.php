@@ -9,7 +9,7 @@ if(isset($_POST['save'])){
 	// $jk_mhs 	= $_POST['jk_mhs'];
 	// $foto 	= $_POST['foto'];
 	// $pass_mhs 	= $_POST['pass_mhs'];
-	$npm = $_POST['id'];
+	$npm = $_POST['npm'];
 	$ekstensi_diperbolehkan	= array('png','jpg');
 	$keterangan = "online";
 	$nama = $_FILES['kwitansi']['name'];
@@ -22,8 +22,12 @@ if(isset($_POST['save'])){
 	if(in_array($ekstensi, $ekstensi_diperbolehkan) === true){
 		if($ukuran < 1044070){			
 			move_uploaded_file($file_tmp, 'file/'.$nama);
-			if($conn->create($npm , $nama, $keterangan , $date, "0")){
-				echo 'FILE BERHASIL DI UPLOAD';
+			if($conn->create($npm , $nama, $keterangan , $date, "1")){
+				//echo $npm;
+				//echo ' FILE BERHASIL DI UPLOAD';
+				echo "<script>alert('File Berhasil Tersimpan')</script>";
+				echo "<script> document.location.href='../../index.php?lihat=aktivasi/index'; </script>";
+				
 			}else{
 				echo 'GAGAL MENGUPLOAD GAMBAR';
 			}

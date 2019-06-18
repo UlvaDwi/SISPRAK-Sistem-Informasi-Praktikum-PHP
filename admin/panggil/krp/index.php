@@ -3,12 +3,13 @@ require_once 'class.php';
 $conn = new db_class();
 $link 	= "index.php?lihat=krp/";
 $con = mysqli_connect("localhost","root","","dbpraktikum");
-$read = $conn->read();
 $npm = "170403020049";
+$read = $conn->read($conn->jurusan_user($npm));
 $pilihan = $conn ->pilihan_krp($npm);
-
+$_SESSION['jur'] = $conn->jurusan_user($npm);
 $pilihan_jadwal= array();
 $choosen_mp = array();
+$jadwal = array();
 // menyimpan data pilihan krp
 while ($k =mysqli_fetch_assoc($pilihan)) {
 	$pilihan_jadwal[] = $k;
@@ -51,6 +52,17 @@ foreach ($jadwal as $tampil_jadwal) {
 							<th>Jadwal</th>
 							<th>Aksi</th>
 						</tr>
+						<?php 
+						if (empty($jadwal)) {
+							?>
+							<tr>
+								<td colspan="2">
+									data tidak ada
+								</td>
+							</tr>
+							<?php
+						}
+						 ?>
 						<?php 
 						$mp_before = "";
 						foreach ($jadwal as $tampil_jadwal) {

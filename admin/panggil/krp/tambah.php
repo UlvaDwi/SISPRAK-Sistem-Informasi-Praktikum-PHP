@@ -2,8 +2,9 @@
 require_once 'class.php';
 $conn = new db_class();
 if(ISSET($_POST['sav'])){
-	$mp = $conn->read_mp(1);
+	$mp = $conn->read_mp($_SESSION['jur']);
 	$npm = $_POST['npm'];
+
 	while ($i=$mp->fetch_array()) {
 		$k = $i['kode_mp'];
 		if (isset($_POST['matapraktikum'.$k])) {

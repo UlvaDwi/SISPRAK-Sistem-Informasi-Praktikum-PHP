@@ -3,6 +3,7 @@ require_once 'class.php';
 $conn = new db_class();
 $con = mysqli_connect("localhost","root","","dbpraktikum");
 $npm = $_GET['npm'];
+$link 	= "index.php?lihat=aktivasi/";
 $fetch = $conn->detailaktivasi($npm);
 		switch ($fetch["status_aktivasi"]) {
 			case '1':
@@ -10,13 +11,15 @@ $fetch = $conn->detailaktivasi($npm);
 			break;
 			case "2":
 				$status = "teraktivasi";
+			break;	
 			default:
 				$status = "belum sama sekali";
 			break;
 			}
 	?>
-<table border="1">
 	<h1>Data Aktivasi Mahasiswa <?php echo($fetch['npm']);?></h1>
+<table>
+	
 	<tr>
 		<td rowspan ="7"><?php echo "<img src = 'panggil/aktivasi/file/".($fetch['foto']. " '  width =  '100' height = '100' alt=".$fetch['foto']);?>"
 		</td>
@@ -66,19 +69,38 @@ $fetch = $conn->detailaktivasi($npm);
 switch ($fetch["status_aktivasi"]) {
 			case '1':
 			?>
-			<a href="">back</a>
+			<div class="form-group">
+				<div class ="form-group">
+					<a href="panggil/aktivasi/aktifkan.php?kode=<?php echo$fetch['kode_aktivasi'] ?>">Terima</a>
+				</div>
+			</div>
+				<div class = "form-group">
+					<a href="panggil/aktivasi/hapus.php?kode=<?php echo$fetch['kode_aktivasi'] ?>">Tolak</a>
+				</div>
+				</tr>
 			<?php
 			break;
 			case "2":
 			?>
-			<form></form>
-<a href=""	>terima</a>
-<a href=""	>tolak</a>
-			<?php
+			<div class="form-group">						<div class = "form-group">
+								<a href="index.php?lihat=aktivasi/index">Back
+						</div>
+						<?php
+			break;
+
 			default:
 			?>
-			<a href="">upload</a>
-			<?php
+			<div class="form-group">
+							
+							<input type ="file" id="foto_asprak" name = "kwitansi" class="form-control" autofocus>
+						</div>
+						<div class = "form-group">
+							<button name = "save" class = "btn btn-success">
+								<span class = "glyphicon glyphicon-floppy-disk"></span> 
+								Simpan
+							</button>
+						</div>
+						<?php
 			break;
 			}
 

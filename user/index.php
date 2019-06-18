@@ -1,7 +1,7 @@
 <?php
 session_start();
-if(empty($_SESSION['username'])){
-  header("location:login.php");
+if(empty($_SESSION['Username'])){
+  header("location:../index.php");
 }
 ?>
 <!DOCTYPE html>
@@ -44,100 +44,47 @@ if(empty($_SESSION['username'])){
             <span class="glyphicon glyphicon-home"></span> Beranda
           </a>
         </li>
-
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <span class="glyphicon glyphicon-folder-open"></span> &nbsp;Mastering Data 
-            <b class="caret"></b>
+        <li>
+          <a href="index.php?lihat=Aktivasi/index">
+            <span class="glyphicon glyphicon-usd"></span> Aktivasi
           </a>
-          <ul class="dropdown-menu">
-
-            <li>
-              <a href="index.php?lihat=jam/index">
-                <span class="glyphicon glyphicon-time"></span> &nbsp;Master Jam</a>
-              </li>
-              <li>
-                <a href="index.php?lihat=mp/index">
-                  <span class="glyphicon glyphicon-book"></span> &nbsp;Master Mata Praktikum</a>
-                </li>
-                <li>
-                	<a href="index.php?lihat=materi/index">
-                   <span class="glyphicon glyphicon-user"></span> &nbsp;Master Materi</a>
-                 </li>
-                 <li>
-                   <a href="index.php?lihat=detailmateri/index">
-                     <span class="glyphicon glyphicon-lock"></span> &nbsp;Master Detail Materi</a>
-                   </li>
-
-                   <li>
-                    <a href="index.php?lihat=asprak/index">
-                      <span class="glyphicon glyphicon-user"></span> &nbsp;Master Asprak</a>
-                    </li>
-                    <li>
-                      <a href="index.php?lihat=jurusan/index">
-                        <span class="glyphicon glyphicon-book"></span> &nbsp;Master Jurusan</a>
-                      </li>
-                      <li>
-                        <a href="index.php?lihat=karyawan/index">
-                          <span class="glyphicon glyphicon-user"></span> &nbsp;Master karyawan</a>
-                        </li>
-                        <li>
-                          <a href="index.php?lihat=kelas/index">
-                            <span class="glyphicon glyphicon-lock"></span> &nbsp;Master kelas</a>
-                          </li>
-
-                          <li>
-                            <a href="index.php?lihat=laboratorium/index">
-                              <span class="glyphicon glyphicon-time"></span> &nbsp;Master laboratorium</a>
-                            </li>
-                            <li>
-                              <a href="index.php?lihat=tahunajaran/index">
-                                <span class="glyphicon glyphicon-book"></span> &nbsp;Master Tahun Ajaran</a>
-                              </li>
-
-                              <li>
-                                <a href="index.php?lihat=jenisnilai/index">
-                                  <span class="glyphicon glyphicon-time"></span> &nbsp;Master Jenis Nilai</a>
-                                </li>
-                                <li>
-                                  <a href="index.php?lihat=mahasiswa/index">
-                                    <span class="glyphicon glyphicon-book"></span> &nbsp;Master Mahasiswa</a>
-                                  </li>
-
-                                </ul>
-                              </li>
-
-                              <li>
-                                <a href="index.php?lihat=Aktivasi/index">
-                                  <span class="glyphicon glyphicon-usd"></span> Aktivasi
-                                </a>
-                              </li>
-                              <li>
-                                <a href="logout.php">
-                                  <span class="glyphicon glyphicon-log-out"></span> Log Out
-                                </a>
-                              </li>
+        </li>
+        <li>
+          <a href="index.php?lihat=krp/index">
+            <span class="glyphicon glyphicon-usd"></span> KRP
+          </a>
+        </li>
+        <li>
+          <a href="index.php?lihat=materi/index">
+            <span class="glyphicon glyphicon-usd"></span> materi
+          </a>
+        </li>
+        <li>
+          <a href="../logout.php">
+            <span class="glyphicon glyphicon-log-out"></span> Log Out
+          </a>
+        </li>
 
 
-                            </ul>
-                          </div><!-- #navbar -->
-                        </div><!-- .container -->
-                      </nav><!-- .navbar -->
+      </ul>
+    </div><!-- #navbar -->
+  </div><!-- .container -->
+</nav><!-- .navbar -->
 
 
-                      <div class="container">
-                        <?php
+<div class="container">
+  <?php
       	// Skrip dibawah berfungsi memanggil perintah sesuai nama file
-                        if(!empty($_GET['lihat'])){
-                          include('panggil/'.$_GET['lihat'].'.php');
-                        }
+  if(!empty($_GET['lihat'])){
+    include('panggil/'.$_GET['lihat'].'.php');
+  }
 
-                        else{
-                          include 'beranda.php';
-                        }
-                        ?>
+  else{
+    include 'beranda.php';
+  }
+  ?>
 
-                      </div> <!-- .container -->
-                    </body>
+</div> <!-- .container -->
+</body>
 
-                    </html>
+</html>

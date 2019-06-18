@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(empty($_SESSION['Username'])){
+  header("location:../index.php");
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +16,6 @@
   <script src="assets/jquery2.0.3/jquery-2.0.3.min.js"></script>
   <script src="assets/js/jquery.chained.min.js"></script>
   <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
 
 </head>
@@ -178,7 +183,7 @@
     </li>
     <!-- Logout -->
     <li>
-      <a href="index.php?lihat=Aktivasi/index">
+      <a href="../logout.php">
         <span class="glyphicon glyphicon-usd"></span> 
         Logout
       </a>

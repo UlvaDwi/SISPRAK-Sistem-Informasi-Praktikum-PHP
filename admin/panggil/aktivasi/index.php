@@ -1,26 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Sisfo Praktikum</title>
-	<!-- Icon -->
-	<link rel="shortcut icon" type="image/icon" href="kanjuruhan.png">
-</head>
-<body>
-	<style type="text/css">
-		body{
-			background-color:  #f0f5f5;
-			/*background: transparent;*/
-		}
-		form, table{
-			background-color: white;
-			padding:20px;
-			border-radius: 5px;
-
-		}
-	</style>
-
-</body>	
-</html>
 <?php
 require 'class.php';
 $conn = new db_class();
@@ -35,42 +12,6 @@ $link 	= "index.php?lihat=aktivasi/";
 		<hr style = "border-top:1px dotted #000;"/>
 
 		<div class = "row">	
-			<!-- <div class = "col-lg-3"></div> -->
-			<div class = "col-lg-12">
-				<!-- status aktivasi -->
-				<div class="col-lg-4">
-				<form method ="POST"action = "" enctype = "multipart/form-data">
-					<div class="form-group">
-						<label>Status Aktivasi</label>
-						<select name="status_aktivasi" class="form-control">
-							<option>--pilih status aktivasi--</option>
-							<option value="0">Belum Aktivasi</option>
-							<option value="1">Request Aktivasi</option>
-							<option value="2">Sudah di Aktivasi</option>
-							
-						</select>
-					</div>
-				</form>
-			</div>
-			<div class="col-lg-4">
-				<form method ="POST"action = "" enctype = "multipart/form-data">
-					<div class="form-group">
-						<label>Jurusan</label>
-						<select name="status_aktivasi" class="form-control">
-							<?php
-							$con = mysqli_connect("localhost","root","","dbpraktikum");
-					$result = mysqli_query($con,"SELECT *FROM tbl_jurusan ORDER BY kode_jurusan");
-				
-							echo "<option>--pilih jurusan--</option>";
-							
-							while($row = mysqli_fetch_assoc($result)){
-								echo "<option value=$row[kode_jurusan]>$row[nama_jurusan]</option>";
-							} 
-							?>
-						</select>
-					</div>
-				</form>
-			</div>
 			<div class="col-lg-4">
 				<form method ="POST"action = "" enctype = "multipart/form-data">
 					<div class="form-group">
@@ -145,7 +86,6 @@ $link 	= "index.php?lihat=aktivasi/";
 				<th>kwitansi</th>
 				<th>keterangan</th>
 				<th>waktu aktivasi</th>
-				<th>status</th>
 				<th>aksi</th>
 			</tr>
 			<tbody>
@@ -175,7 +115,6 @@ $link 	= "index.php?lihat=aktivasi/";
 						<td><?php echo "<img src = 'panggil/aktivasi/file/".$tampil['kwitansi']. " '  width =  '100' height = '100' alt=".$tampil['kwitansi']."> "?></td>
 						<td><?php echo $tampil['keterangan']?></td>
 						<td><?php echo $tampil['waktu_aktivasi']?></td>
-						<td><?php echo $tampil['status_aktivasi']?></td>
 						
 						<td>
 							<a href="<?php echo $link.'detailaktivasi&npm='.$tampil['npm'] ?>"  class="btn btn-primary btn-sm"><?php echo $button?></a>

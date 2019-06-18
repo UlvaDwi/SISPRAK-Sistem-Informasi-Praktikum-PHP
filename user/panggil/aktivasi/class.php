@@ -2,14 +2,13 @@
 	require 'koneksi.php';
 	
 	class db_class extends db_connect{	
-		
 		public function __construct(){
 			$this->connect();
 		}
 		public function cek_status($npm){
 			$konek = mysqli_connect("localhost", "root", "", "dbpraktikum");
 			$ecsape = mysqli_real_escape_string($konek, $npm);
-			$sql= "SELECT tbl_aktivasi.status_aktivasi FROM `tbl_mahasiswa` LEFT JOIN tbl_aktivasi ON tbl_mahasiswa.npm = tbl_aktivasi.npm where tbl_mahasiswa.npm = $ecsape";
+			$sql= "SELECT tbl_aktivasi.status_aktivasi, tbl_aktivasi.kwitansi FROM `tbl_mahasiswa` LEFT JOIN tbl_aktivasi ON tbl_mahasiswa.npm = tbl_aktivasi.npm where tbl_mahasiswa.npm = $ecsape";
 			$query = mysqli_query($konek,$sql)or die(mysqli_error($konek));
 			$fetch = mysqli_fetch_array($query);
 			return $fetch;

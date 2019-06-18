@@ -44,8 +44,12 @@ $fetch = $conn->tampil($kode_jadwal_praktikum);
 					$result = mysqli_query($con,"SELECT *FROM tbl_matapraktikum ORDER BY kode_mp");
 					echo "<option>--pilih Mata Praktikum--</option>";
 					while($row = mysqli_fetch_assoc($result)){
-
-						echo "<option value=$row[kode_mp]>$row[nama_mp]</option>";
+						if ($row['kode_mp']==$fetch['kode_mp']) {
+							echo "<option value=$row[kode_mp] selected>$row[nama_mp]</option>";
+						}else{
+							echo "<option value=$row[kode_mp]>$row[nama_mp]</option>";
+						}
+			
 					} 
 					?>
 					</select>
@@ -59,8 +63,12 @@ $fetch = $conn->tampil($kode_jadwal_praktikum);
 					$result = mysqli_query($con,"SELECT *FROM tbl_kelas ORDER BY kode_kelas");
 					echo "<option>--pilih kode kelas--</option>";
 					while($row = mysqli_fetch_assoc($result)){
+						if ($row['kode_kelas']==$fetch['kode_kelas']) {
+							echo "<option value=$row[kode_kelas] selected>$row[nama_kelas]</option>";
+						}else{
+							echo "<option value=$row[kode_kelas]>$row[nama_kelas]</option>";
+						}
 
-						echo "<option value=$row[kode_kelas]>$row[nama_kelas]</option>";
 					} 
 					?>
 					</select>
@@ -74,8 +82,11 @@ $fetch = $conn->tampil($kode_jadwal_praktikum);
 					$result = mysqli_query($con,"SELECT *FROM tbl_asprak ORDER BY kode_asprak");
 					echo "<option>--pilih kode Asprak--</option>";
 					while($row = mysqli_fetch_assoc($result)){
-
-						echo "<option value=$row[kode_asprak]>$row[nama_asprak]</option>";
+						if ($row['kode_asprak']==$fetch['kode_asprak']) {
+							echo "<option value=$row[kode_asprak] selected>$row[nama_asprak]</option>";
+						}else{
+							echo "<option value=$row[kode_asprak]>$row[nama_asprak]</option>";
+						}
 					} 
 					?>
 					</select>
@@ -103,8 +114,11 @@ $fetch = $conn->tampil($kode_jadwal_praktikum);
 					$result = mysqli_query($con,"SELECT *FROM tbl_jam ORDER BY kode_jam");
 					echo "<option>--pilih kode Jam--</option>";
 					while($row = mysqli_fetch_assoc($result)){
-
-						echo "<option value=$row[kode_jam]>$row[jam_mulai].$row[jam_akhir]</option>";
+						if ($row['kode_jam']==$fetch['kode_jam']) {
+							echo "<option value=$row[kode_jam] selected>$row[jam_mulai]-$row[jam_akhir]</option>";
+						}else{
+							echo "<option value=$row[kode_jam]>$row[jam_mulai]-$row[jam_akhir]</option>";
+						}
 					} 
 					?>
 					</select>
@@ -118,8 +132,11 @@ $fetch = $conn->tampil($kode_jadwal_praktikum);
 					$result = mysqli_query($con,"SELECT *FROM tbl_ruanglab ORDER BY kode_lab");
 					echo "<option>--pilih kode lab--</option>";
 					while($row = mysqli_fetch_assoc($result)){
-
-						echo "<option value=$row[kode_lab]>$row[nama_lab]</option>";
+						if ($row['kode_lab']==$fetch['kode_lab']) {
+							echo "<option value=$row[kode_lab] selected>$row[nama_lab]</option>";
+						}else{
+							echo "<option value=$row[kode_lab]>$row[nama_lab]</option>";
+						}
 					} 
 					?>
 					</select>

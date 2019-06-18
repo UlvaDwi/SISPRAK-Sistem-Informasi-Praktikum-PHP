@@ -6,10 +6,29 @@
 		public function __construct(){
 			$this->connect();
 		}
+
+		public function checkData( $hari,$kode_jam,$kode_lab )
+		{
+			$stmt =$this->conn->prepare("select * from tbl_penjadwalan");
+			$hari=strtolower($hari);
+			$gabung = $hari.$kode_jam.$kode_lab;
+			if ($stmt->execute()) {
+				$result =$stmt->get_result();
+				// echo "inputan : ".$gabung;
+				while ($i = $result->fetch_array()) {
+					$dat = strtolower($i['hari']).$i['kode_jam'].$i['kode_lab']; 
+					if ($dat==$gabung) {
+						// echo $dat."::".$gabung;
+						return 1;
+						break;
+					}
+				}
+			}
+		}
 		
-		public function create($kode_jadwal_praktikum , $kode_mp ,$kode_kelas , $kode_asprak ,$hari , $kode_jam , $kode_lab){
-			$stmt = $this->conn->prepare("INSERT INTO `tbl_penjadwalan` (`kode_jadwal_praktikum`, `kode_mp` , `kode_kelas` , `kode_asprak` , `hari` , `kode_jam` , `kode_lab`) VALUES (?,?,?,?,?,?,?)") or die($this->conn->error);
-			$stmt->bind_param("issssis", $kode_jadwal_praktikum , $kode_mp ,$kode_kelas , $kode_asprak ,$hari , $kode_jam , $kode_lab);
+		public function create($kode_mp ,$kode_kelas , $kode_asprak ,$hari , $kode_jam , $kode_lab){
+			$stmt = $this->conn->prepare("INSERT INTO `tbl_penjadwalan` (`kode_jadwal_praktikum`, `kode_mp` , `kode_kelas` , `kode_asprak` , `hari` , `kode_jam` , `kode_lab`) VALUES (null,?,?,?,?,?,?)") or die($this->conn->error);
+			$stmt->bind_param("ssssis", $kode_mp ,$kode_kelas , $kode_asprak ,$hari , $kode_jam , $kode_lab);
 			if($stmt->execute()){
 				$stmt->close();
 				$this->conn->close();

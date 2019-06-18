@@ -6,6 +6,20 @@
 		public function __construct(){
 			$this->connect();
 		}
+
+		public function aktifkan($npm){
+			$sql = "UPDATE tbl_aktivasi set status_aktivasi = 2 WHERE kode_aktivasi = ?";
+			$konek = mysqli_connect("localhost", "root", "", "dbpraktikum");
+			$stmt = mysqli_stmt_init($konek);
+			if (!mysqli_stmt_prepare($stmt, $sql)) {
+				$result = "error";
+			}else{
+				mysqli_stmt_bind_param($stmt, "s", $npm);
+				mysqli_stmt_execute($stmt);
+				$result ="berhasil";
+			}
+			return $result;
+		}
 		
 		public function create($npm , $kwitansi, $keterangan , $waktu_aktivasi, $status){
 			$stmt = $this->conn->prepare("INSERT INTO `tbl_aktivasi` (`npm`, `kwitansi` ,`keterangan`, `waktu_aktivasi`, `status_aktivasi`) VALUES (?,?,?,?,?)") or die($this->conn->error);
