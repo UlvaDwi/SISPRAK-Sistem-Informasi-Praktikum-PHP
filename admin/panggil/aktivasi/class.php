@@ -26,7 +26,7 @@
 				return $result;
 			}
 		}
-
+		
 		public function read_foto($kode_aktivasi){
 			$stmt = $this->conn->prepare("select * from tbl_aktivasi where kode_aktivasi = ?") or die($this->conn->error);
 			$stmt->bind_param("s", $kode_aktivasi);
@@ -96,6 +96,18 @@
 				$readmhs = 0;
 			}
 			return $readmhs;
+			// }
+		}
+		public function detailaktivasi($npm){
+			$stmt = $this->conn->prepare("SELECT *, tbl_jurusan.nama_jurusan FROM tbl_aktivasi right join tbl_mahasiswa on tbl_aktivasi.npm = tbl_mahasiswa.npm inner join tbl_jurusan on tbl_mahasiswa.kode_jurusan = tbl_jurusan.kode_jurusan where tbl_mahasiswa.npm = ?") or die($this->conn->error);
+			$stmt->bind_param("s", $npm);
+			if($stmt->execute()){
+				$result = $stmt->get_result();
+				$fetch = $result->fetch_array();
+				$stmt->close();
+				$this->conn->close();
+				return $fetch;
+			}
 		}
 		public function approve($npm){
 			$stmt = $this->conn->prepare("UPDATE `tbl_aktivasi` SET `status_aktivasi` = 2 

@@ -9,7 +9,7 @@ if(isset($_POST['save'])){
 	// $jk_mhs 	= $_POST['jk_mhs'];
 	// $foto 	= $_POST['foto'];
 	// $pass_mhs 	= $_POST['pass_mhs'];
-	$npm = $_POST['id'];
+	$npm = $_POST['npm'];
 	$ekstensi_diperbolehkan	= array('png','jpg');
 	$keterangan = "offline";
 	$nama = $_FILES['kwitansi']['name'];
