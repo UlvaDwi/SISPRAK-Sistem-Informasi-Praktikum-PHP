@@ -7,7 +7,9 @@ if(empty($_SESSION['Username'])){
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SISPRAK</title>
+  <title>Sisfo Praktikum</title>
+  <!-- Icon -->
+  <link rel="shortcut icon" type="image/icon" href="../kanjuruhan.png">
   <!-- Panggil Bootstrap -->
   <link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet">
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> -->
@@ -33,7 +35,7 @@ if(empty($_SESSION['Username'])){
          <span class="icon-bar"></span>
          <span class="icon-bar"></span>
        </button>
-       <a class="navbar-brand" href="index.php">SISPRAK</a>
+       <a class="navbar-brand" href="index.php"><b>Sisfo Praktikum</b></a>
      </div>
      <!-- Daftar menu yang diinginkan-->
      <div id="navbar" class="navbar-collapse collapse">
@@ -46,26 +48,26 @@ if(empty($_SESSION['Username'])){
         <!-- mata praktikum -->
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <span class="glyphicon glyphicon-folder-open"></span> 
+            <span class=" glyphicon glyphicon-list "></span> 
             &nbsp;Mata praktikum
             <b class="caret"></b>
           </a>
           <ul class="dropdown-menu">
             <li>
               <a href="index.php?lihat=mp/index">
-                <span class="glyphicon glyphicon-book"></span> 
+                <span class="glyphicon glyphicon-tags"></span> 
                 &nbsp; Mata Praktikum
               </a>
             </li>
             <li>
              <a href="index.php?lihat=materi/index">
-               <span class="glyphicon glyphicon-user"></span> 
+               <span class="glyphicon glyphicon-book"></span> 
                &nbsp; Materi
              </a>
            </li>
            <li>
              <a href="index.php?lihat=detailmateri/index">
-               <span class="glyphicon glyphicon-lock"></span> 
+               <span class="glyphicon glyphicon-tag"></span> 
                &nbsp; Detail Materi
              </a>
            </li>
@@ -74,33 +76,33 @@ if(empty($_SESSION['Username'])){
        <!-- USER -->
        <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <span class="glyphicon glyphicon-folder-open"></span> 
+          <span class="glyphicon glyphicon-user"></span> 
           &nbsp;User
           <b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
           <li>
             <a href="index.php?lihat=mahasiswa/index">
-              <span class="glyphicon glyphicon-book"></span>
+              <span class="glyphicon glyphicon-education"></span>
               &nbsp;Mahasiswa
             </a>
           </li>
           <li>
             <a href="index.php?lihat=karyawan/index">
               <span class="glyphicon glyphicon-user"></span> 
-              &nbsp;Master karyawan
+              &nbsp;Karyawan
             </a>
           </li>
           <li>
             <a href="index.php?lihat=asprak/index">
               <span class="glyphicon glyphicon-user"></span> 
-              &nbsp;Master Asprak
+              &nbsp;Asisten Praktikum
             </a>
           </li>
           <li>
             <a href="index.php?lihat=jurusan/index">
-              <span class="glyphicon glyphicon-book"></span> 
-              &nbsp;Master Jurusan
+              <span class="glyphicon glyphicon-tasks"></span> 
+              &nbsp;Jurusan
             </a>
           </li>
         </ul>
@@ -108,32 +110,32 @@ if(empty($_SESSION['Username'])){
       <!--  JADWAL  -->
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <span class="glyphicon glyphicon-folder-open"></span> 
+          <span class="glyphicon glyphicon-list-alt"></span> 
           &nbsp;Jadwal
           <b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
           <li>
             <a href="index.php?lihat=penjadwalan/index">
-              <span class="glyphicon glyphicon-lock"></span> 
+              <span class="glyphicon glyphicon-list"></span> 
               &nbsp;Penjadwalan
             </a>
           </li>
           <li>
             <a href="index.php?lihat=kelas/index">
-              <span class="glyphicon glyphicon-lock"></span> 
+              <span class="glyphicon glyphicon-home"></span> 
               &nbsp;kelas
             </a>
           </li>
           <li>
             <a href="index.php?lihat=laboratorium/index">
-              <span class="glyphicon glyphicon-time"></span> 
+              <span class="glyphicon glyphicon-home"></span> 
               &nbsp;laboratorium
             </a>
           </li>
           <li>
             <a href="index.php?lihat=tahunajaran/index">
-              <span class="glyphicon glyphicon-book"></span> 
+              <span class="glyphicon glyphicon-calendar"></span> 
               &nbsp;Tahun Ajaran
             </a>
           </li>
@@ -155,7 +157,7 @@ if(empty($_SESSION['Username'])){
         <ul class="dropdown-menu">
          <li>
           <a href="index.php?lihat=jenisnilai/index">
-            <span class="glyphicon glyphicon-time"></span> 
+            <span class="glyphicon glyphicon-paperclip"></span> 
             &nbsp; Jenis Nilai
           </a>
         </li>
@@ -164,27 +166,20 @@ if(empty($_SESSION['Username'])){
     <!-- AKTIVASI -->
     <li>
       <a href="index.php?lihat=Aktivasi/index">
-        <span class="glyphicon glyphicon-usd"></span> 
+        <span class="glyphicon glyphicon-check"></span> 
         Aktivasi
       </a>
     </li>
     <!-- KRP -->
-    <li>
+    <!-- <li>
       <a href="index.php?lihat=krp/index">
-        <span class="glyphicon glyphicon-home"></span> KRP
+        <span class="glyphicon glyphicon-file"></span> KRP
       </a>
-    </li>
-    <!-- Request -->
-    <li>
-      <a href="index.php?lihat=Aktivasi/index">
-        <span class="glyphicon glyphicon-usd"></span> 
-        Request
-      </a>
-    </li>
+    </li> -->
     <!-- Logout -->
     <li>
       <a href="../logout.php">
-        <span class="glyphicon glyphicon-usd"></span> 
+        <span class="glyphicon glyphicon-log-out"></span> 
         Logout
       </a>
     </li>

@@ -17,11 +17,12 @@ $fetch = $conn->detailaktivasi($npm);
 			break;
 			}
 	?>
-	<h1>Data Aktivasi Mahasiswa <?php echo($fetch['npm']);?></h1>
-<table>
+
+	<h3>Data Aktivasi Mahasiswa <?php echo($fetch['npm']);?></h3>
+<table width="500px">
 	
 	<tr>
-		<td rowspan ="7"><?php echo "<img src = 'panggil/aktivasi/file/".($fetch['foto']. " '  width =  '100' height = '100' alt=".$fetch['foto']);?>"
+		<td rowspan ="7" align="center" valign="center"><?php echo "<img src = 'panggil/aktivasi/file/".($fetch['foto']. " '  width =  '100' height = '100' alt=".$fetch['foto']);?>"
 		</td>
 		<td>NPM </td>
 		<td>:</td>
@@ -60,7 +61,10 @@ $fetch = $conn->detailaktivasi($npm);
 		<td><?php echo($fetch['waktu_aktivasi']);?></td>
 	</tr>
 	<tr>
-		<td colspan="4"><?php echo "<img src = 'panggil/aktivasi/file/".($fetch['kwitansi']. " '  width =  '100' height = '100' alt=".$fetch['kwitansi']);?>"
+	<td colspan="4" align="center"><b>Bukti Pembayaran</b></td>
+</tr>
+<tr>
+		<td colspan="4" align="center"><?php echo "<img src = 'panggil/aktivasi/file/".($fetch['kwitansi']. " '  width =  '300' height = '100' alt=".$fetch['kwitansi']);?>"
 		</td>
 	</tr>
 
@@ -71,20 +75,22 @@ switch ($fetch["status_aktivasi"]) {
 			?>
 			<div class="form-group">
 				<div class ="form-group">
-					<a href="panggil/aktivasi/aktifkan.php?kode=<?php echo$fetch['kode_aktivasi'] ?>">Terima</a>
+					<a href="panggil/aktivasi/aktifkan.php?kode=<?php echo$fetch['kode_aktivasi'] ?>"class="btn btn-primary btn-sm"><span class = "glyphicon glyphicon-ok"></span>Terima</a>
 				</div>
 			</div>
 				<div class = "form-group">
-					<a href="panggil/aktivasi/hapus.php?kode=<?php echo$fetch['kode_aktivasi'] ?>">Tolak</a>
+					<a href="panggil/aktivasi/hapus.php?kode=<?php echo$fetch['kode_aktivasi'] ?>" class="btn btn-danger btn-sm"><span class = "glyphicon glyphicon-remove"></span>Tolak</a>
 				</div>
 				</tr>
 			<?php
 			break;
 			case "2":
-			?>
-			<div class="form-group">						<div class = "form-group">
-								<a href="index.php?lihat=aktivasi/index">Back
+			?>	
+			<div class="form-group">
+				<div class ="form-group">				
+								<a href="index.php?lihat=aktivasi/index" class="btn btn-primary btn-sm"><span class = "glyphicon glyphicon-circle-arrow-left"></span>Back</a>
 						</div>
+					</div>
 						<?php
 			break;
 

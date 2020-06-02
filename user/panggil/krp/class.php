@@ -20,6 +20,25 @@
  		return 0;
  	}
 
+ 	public function cek_aktivasi($npm)
+ 	{
+ 		$sql = "SELECT status_aktivasi from tbl_aktivasi where npm = ?";
+ 		$konek = mysqli_connect("localhost", "root", "", "dbpraktikum");
+ 		$stmt = mysqli_stmt_init($konek);
+ 		if (!mysqli_stmt_prepare($stmt, $sql)) {
+ 			$hasil = "error";
+ 		}else{
+ 			mysqli_stmt_bind_param($stmt, "s", $npm);
+ 			mysqli_stmt_execute($stmt);
+ 			$result = mysqli_stmt_get_result($stmt);
+ 			$row = mysqli_fetch_assoc($result);
+ 			$hasil = $row["status_aktivasi"];
+ 		}
+ 		return $hasil;
+
+
+ 	}
+
 	public function jurusan_user($npm){
  		$sql = "SELECT kode_jurusan from tbl_mahasiswa where npm = ?";
  		$konek = mysqli_connect("localhost", "root", "", "dbpraktikum");

@@ -12,17 +12,18 @@ $link 	= "index.php?lihat=aktivasi/";
 		<hr style = "border-top:1px dotted #000;"/>
 
 		<div class = "row">	
-			<div class="col-lg-4">
+			<div class="col-lg-6">
 				<form method ="POST"action = "" enctype = "multipart/form-data">
 					<div class="form-group">
 						<label>NPM</label>
-						<input type="text" name="npm" value="" placeholder="masukan npm">
+						<input type="text" name="npm" value="" placeholder="masukan npm"class="form-control" >
 					</div>
 					<div class="form-group">
-						<input type="submit" name="cari" value="cari">
+
+						<input type="submit" name="cari" value="cari"class = "btn btn-primary btn-sm">
 					</div>
 				</form>
-			</div>
+			<!-- </div> -->
 				<?php 
 				if (isset($_POST['cari'])) {
 					$readmhs = $conn->tampildetail($_POST["npm"]);
@@ -30,8 +31,9 @@ $link 	= "index.php?lihat=aktivasi/";
 						echo "data mahasiswa tidak ada";
 					}else{
 						?>
-						<table>
+						<table border="0" cellspacing="10" cellpadding="10" width="555px">
 							<tr>
+								<td rowspan="5"><?php echo "<img src = 'panggil/mahasiswa/gambar/".$readmhs['foto']. " '  width =  '100' height = '150' alt=".$readmhs['foto']."> "?></td>
 								<td>NPM</td>
 								<td><?php echo $readmhs['npm'];?></td>
 							</tr>
@@ -52,8 +54,7 @@ $link 	= "index.php?lihat=aktivasi/";
 								<td><?php echo $readmhs['jk_mhs'];?></td>
 							</tr>
 							<tr>
-								<td>Alamat</td>
-								<td><?php echo $readmhs['foto'];?></td>
+								
 							</tr>
 						</table>
 						<form method ="POST"action = "panggil/aktivasi/tambah.php" enctype = "multipart/form-data">
@@ -112,7 +113,7 @@ $link 	= "index.php?lihat=aktivasi/";
 					<tr>
 						<td><?php echo $no++; ?></td>
 						<td><?php echo $tampil['npm']?></td>
-						<td><?php echo "<img src = 'panggil/aktivasi/file/".$tampil['kwitansi']. " '  width =  '100' height = '100' alt=".$tampil['kwitansi']."> "?></td>
+						<td align="center"><?php echo "<img src = 'panggil/aktivasi/file/".$tampil['kwitansi']. " '  width =  '300' height = '100' alt=".$tampil['kwitansi']."> "?></td>
 						<td><?php echo $tampil['keterangan']?></td>
 						<td><?php echo $tampil['waktu_aktivasi']?></td>
 						

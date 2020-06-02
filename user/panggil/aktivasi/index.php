@@ -40,8 +40,8 @@ $cek= $conn->cek_status($_SESSION['Username']);
 					?>
 					<img src="panggil/aktivasi/file/<?php echo $cek['kwitansi'] ?>">
 					<div class = "form-group">
-						<br><br><button name = "save" class = "btn btn-success">
-							<span class = "glyphicon glyphicon-floppy-disk"></span> 
+						<br><br><button name = "save" class = "btn btn-primary btn-sm">
+							
 							menunggu persetujuan
 						</button>
 					</div>

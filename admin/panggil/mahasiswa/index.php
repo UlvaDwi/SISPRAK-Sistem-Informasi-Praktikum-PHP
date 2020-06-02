@@ -22,10 +22,10 @@ $link 	= "index.php?lihat=mahasiswa/";
 						<label>NAMA MAHASISWA</label>
 						<input type ="text" name = "nama_mhs" class="form-control" autofocus required>
 					</div>
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<label>PASSWORD</label>
 						<input type ="password" name = "pass_mhs" class="form-control" autofocus required>
-					</div>
+					</div> -->
 					<div class="form-group">
 						<label>JENIS KELAMIN</label>
 						<div class="radio">

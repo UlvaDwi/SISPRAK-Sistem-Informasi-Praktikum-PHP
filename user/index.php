@@ -8,7 +8,9 @@ if(empty($_SESSION['Username'])){
 <html>
 
 <head>
-  <title>SISPRAK</title>
+ <title>Sisfo Praktikum</title>
+  <!-- Icon -->
+  <link rel="shortcut icon" type="image/icon" href="../kanjuruhan.png">
 
   <!-- Panggil Bootstrap -->
   <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -33,7 +35,7 @@ if(empty($_SESSION['Username'])){
          <span class="icon-bar"></span>
          <span class="icon-bar"></span>
        </button>
-       <a class="navbar-brand" href="index.php">SISPRAK</a>
+       <a class="navbar-brand" href="index.php"><b>Sisfo Praktikum</b></a>
      </div>
      <!-- Daftar menu yang diinginkan-->
      <div id="navbar" class="navbar-collapse collapse">
@@ -46,17 +48,17 @@ if(empty($_SESSION['Username'])){
         </li>
         <li>
           <a href="index.php?lihat=Aktivasi/index">
-            <span class="glyphicon glyphicon-usd"></span> Aktivasi
+            <span class="glyphicon glyphicon-check"></span> Aktivasi
           </a>
         </li>
         <li>
           <a href="index.php?lihat=krp/index">
-            <span class="glyphicon glyphicon-usd"></span> KRP
+            <span class="glyphicon glyphicon-file"></span> KRP
           </a>
         </li>
         <li>
           <a href="index.php?lihat=materi/index">
-            <span class="glyphicon glyphicon-usd"></span> materi
+            <span class="glyphicon glyphicon-book"></span> materi
           </a>
         </li>
         <li>

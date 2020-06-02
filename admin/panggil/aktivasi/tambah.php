@@ -23,7 +23,12 @@ if(isset($_POST['save'])){
 		if($ukuran < 1044070){			
 			move_uploaded_file($file_tmp, 'file/'.$nama);
 			if($conn->create($npm , $nama, $keterangan , $date, "1")){
-				echo 'FILE BERHASIL DI UPLOAD';
+				// echo 'FILE BERHASIL DI UPLOAD';
+				?>
+	<script type="text/javascript">
+		alert( "berhasil");
+	</script>
+	<?php
 			}else{
 				echo 'GAGAL MENGUPLOAD GAMBAR';
 			}
@@ -34,7 +39,11 @@ if(isset($_POST['save'])){
 		echo 'EKSTENSI FILE YANG DI UPLOAD TIDAK DI PERBOLEHKAN';
 	}
 	// header('location: ../../index.php?lihat=mahasiswa/index');
-	
+	?>
+	<script type="text/javascript">
+	window.location.replace("../../index.php?lihat=aktivasi/index");
+</script>
+	<?php
 }	
 
 ?>
